@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if not_found %}
+        <h3>{{not_found}}</h3>
+    {% else %}    
+        <table class="table table-light">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Daily Low</th>
+                    <th scope="col">Daily High</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for key,value in crypto.DISPLAY.items %}
+                <tr>
+                    <th scope="row">{{key}}</th>
+                    <td>{{value.USD.PRICE}}</td>
+                    <td>{{value.USD.HIGHDAY}}</td>
+                    <td>{{value.USD.LOWDAY}}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}
